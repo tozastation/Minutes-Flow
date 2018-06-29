@@ -56,15 +56,19 @@ $line_2 = "お疲れ様です。議事録担当です。"."\n";
 $line_3 = "議事録の作成が完了致しましたので、添付にて共有させて頂きます。"."\n";
 $line_4 = "以上です。よろしくお願い致します。"."\n";
 $ps = "※GitHubのイベント管理によるシステムの自動送信になります。"."\n";
-$Body = $line_1.$line_2.$line_3.$line4.$ps;
+$Body = $line_1.$line_2.$line_3.$line_4.$ps;
 mb_encode_mimeheader($Body);
 $mail->Body = $Body;
 
 //添付ファイル
 //srcディレクトリを取得し、最新のファイル名を取得
-$file_list = scan_dir();
-$file_name = $file_list[0];
-$mail->addAttachment('src/'.$file_name);
+$file_list = scandir('tmp', 1);
+if($file_list[0]=="README.pdf"){
+    $file_name = $file_list[1];
+}else{
+    $file_name = $file_list[0];
+}
+$mail->addAttachment('tmp/'.$file_name);
 
 //メール送信時のエラーチェック
 if (!$mail->send()) {
