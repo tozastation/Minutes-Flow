@@ -12,6 +12,7 @@ $MAIL_ID = getenv('ACADEMIC_ID');
 $MAIL_PASS = getenv('ACADEMIC_PASS');
 $MAIL_SERVER = getenv('SMTP_SERVER');
 $MAIL_GROUP = getenv('MAIL_GROUP');
+
 //メーラーのインスタンス生成
 $mail = new PHPMailer;
 
@@ -47,7 +48,7 @@ $mail->setFrom($MAIL_ID, 'アジェ男');
 $mail->addAddress($MAIL_ID, '戸澤');
 
 //件名
-$mail->Subject = '[SHARE] Minutes';
+$mail->Subject = '[共有] 議事録 未来大';
 
 //本文
 $line_1 = "教員の皆様、プロジェクトメンバーの皆さん"."\n";
