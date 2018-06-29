@@ -60,6 +60,7 @@ mb_encode_mimeheader($Body);
 $mail->Body = $Body;
 
 //添付ファイル
+//srcディレクトリを取得し、最新のファイル名を取得
 $file_list = scan_dir();
 $file_name = $file_list[0];
 $mail->addAttachment('src/'.$file_name);
